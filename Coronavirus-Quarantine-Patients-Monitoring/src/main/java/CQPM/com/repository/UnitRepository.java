@@ -9,6 +9,10 @@ import org.springframework.stereotype.Repository;
 
 import CQPM.com.entity.Unit;
 
+/**
+ * @author Do Bao Khanh
+ *
+ */
 @Repository
 public interface UnitRepository extends JpaRepository<Unit, Long> {
 	

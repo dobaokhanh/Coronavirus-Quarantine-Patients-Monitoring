@@ -11,6 +11,10 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.NaturalId;
 
+/**
+ * @author Do Bao Khanh
+ *
+ */
 @Entity
 @Table(name = "roles")
 public class Role {

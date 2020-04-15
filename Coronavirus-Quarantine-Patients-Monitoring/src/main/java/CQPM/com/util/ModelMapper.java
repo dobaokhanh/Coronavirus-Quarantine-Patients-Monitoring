@@ -8,8 +8,16 @@ import CQPM.com.entity.Unit;
 import CQPM.com.payload.PatientResponse;
 import CQPM.com.payload.UnitResponse;
 
+/**
+ * @author Do Bao Khanh
+ *
+ */
 public class ModelMapper {
 
+	/** Map Unit to UnitResponse payload
+	 * @param unit
+	 * @return
+	 */
 	public static UnitResponse mapUnitToUnitResponse(Unit unit) {
 		UnitResponse unitResponse = new UnitResponse();
 		unitResponse.setId(unit.getId());
@@ -30,6 +38,10 @@ public class ModelMapper {
 		return unitResponse;
 	}
 
+	/** Add Patient to PatientResponse payload
+	 * @param patient
+	 * @return
+	 */
 	public static PatientResponse mapPatientToPatientResponse(Patient patient) {
 		PatientResponse patientResponse = new PatientResponse();
 		patientResponse.setId(patient.getId());

@@ -4,6 +4,10 @@ import java.util.List;
 
 import CQPM.com.entity.DailyCheck;
 
+/**
+ * @author Do Bao Khanh
+ *
+ */
 public class PatientResponse {
 
 	private Long id;

@@ -2,6 +2,10 @@ package CQPM.com.payload;
 
 import java.util.List;
 
+/**
+ * @author Do Bao Khanh
+ *
+ */
 public class PagedResponse<T> {
 
 	private List<T> content;

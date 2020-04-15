@@ -11,6 +11,10 @@ import org.springframework.stereotype.Service;
 import CQPM.com.entity.User;
 import CQPM.com.repository.UserRepository;
 
+/**
+ * @author Do Bao Khanh
+ *
+ */
 @Service
 public class CustomUserDetailService implements UserDetailsService {
 

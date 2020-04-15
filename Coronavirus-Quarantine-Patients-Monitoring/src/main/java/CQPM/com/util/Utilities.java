@@ -4,6 +4,10 @@ import java.text.SimpleDateFormat;
 
 import CQPM.com.exception.BadRequestException;
 
+/**
+ * @author Do Bao Khanh
+ *
+ */
 public class Utilities {
 	
 	public static final SimpleDateFormat SDF = new SimpleDateFormat("dd/MM/YYYY");

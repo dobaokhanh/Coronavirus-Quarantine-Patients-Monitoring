@@ -1,5 +1,9 @@
 package CQPM.com.payload;
 
+/**
+ * @author Do Bao Khanh
+ *
+ */
 public class UserIdentityAvailability {
 
 	private Boolean available;

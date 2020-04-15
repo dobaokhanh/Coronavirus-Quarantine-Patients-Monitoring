@@ -4,6 +4,10 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
+/**
+ * @author Do Bao Khanh
+ *
+ */
 public class UnitResponse {
 
 	private Long id;

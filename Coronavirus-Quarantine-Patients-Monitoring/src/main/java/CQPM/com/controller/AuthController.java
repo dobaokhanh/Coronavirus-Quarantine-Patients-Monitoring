@@ -31,6 +31,10 @@ import CQPM.com.repository.RoleRepository;
 import CQPM.com.repository.UserRepository;
 import CQPM.com.security.JwtTokenProvider;
 
+/**
+ * @author Do Bao Khanh
+ *
+ */
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {

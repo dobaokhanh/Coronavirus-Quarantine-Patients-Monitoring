@@ -1,6 +1,5 @@
 package CQPM.com.entity;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -22,6 +21,10 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.NaturalId;
 
+/**
+ * @author Do Bao Khanh
+ *
+ */
 @Entity
 @Table(name = "patients", uniqueConstraints = { @UniqueConstraint(columnNames = { "email" }),
 		@UniqueConstraint(columnNames = { "phone" }) })
@@ -59,7 +62,7 @@ public class Patient {
 	@Column(name = "phone")
 	private String phone;
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
 	@JoinColumn(name = "patient_id")
 	private List<DailyCheck> dailyCheck;
 

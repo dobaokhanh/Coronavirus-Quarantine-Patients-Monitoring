@@ -1,5 +1,9 @@
 package CQPM.com.util;
 
+/**
+ * @author Do Bao Khanh
+ *
+ */
 public interface AppConstants {
 
 	String DEFAULT_PAGE_NUMBER = "0";

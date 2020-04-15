@@ -1,5 +1,9 @@
 package CQPM.com.exception;
 
+/**
+ * @author Do Bao Khanh
+ *
+ */
 public class ResourceNotFoundException extends RuntimeException {
 
 	private String resourceName;

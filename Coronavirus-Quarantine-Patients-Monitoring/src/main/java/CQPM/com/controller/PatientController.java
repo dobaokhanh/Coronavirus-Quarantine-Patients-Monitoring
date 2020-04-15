@@ -27,6 +27,10 @@ import CQPM.com.service.PatientService;
 import CQPM.com.util.AppConstants;
 import CQPM.com.util.ModelMapper;
 
+/**
+ * @author Do Bao Khanh
+ *
+ */
 @RestController
 @RequestMapping("/api")
 public class PatientController {

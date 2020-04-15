@@ -12,12 +12,15 @@ import org.springframework.stereotype.Repository;
 
 import CQPM.com.entity.Patient;
 
+/**
+ * @author Do Bao Khanh
+ *
+ */
 @Repository
 public interface PatientRepository extends JpaRepository<Patient, Long> {
 
 	Optional<Patient> findById(Long patientId);
 
-	//@Query("SELECT p FROM Patient p where p.unitId = :unitId and p.id = :patientId")
 	Optional<Patient> findByUnitIdAndId(Long unitId, Long patientId);
 
 	Page<Patient> findByUnitId(@Param("unitId") Long unitId, Pageable pageable);

@@ -10,6 +10,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import CQPM.com.entity.User;
 
+/**
+ * @author Do Bao Khanh
+ *
+ */
 public class UserPrincipal implements UserDetails {
 	private Long id;
 

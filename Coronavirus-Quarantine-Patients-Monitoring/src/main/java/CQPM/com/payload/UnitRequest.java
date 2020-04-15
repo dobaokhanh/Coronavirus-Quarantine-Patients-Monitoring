@@ -8,6 +8,10 @@ import javax.validation.constraints.Size;
 
 import CQPM.com.entity.Patient;
 
+/**
+ * @author Do Bao Khanh
+ *
+ */
 public class UnitRequest {
 
 	@NotBlank

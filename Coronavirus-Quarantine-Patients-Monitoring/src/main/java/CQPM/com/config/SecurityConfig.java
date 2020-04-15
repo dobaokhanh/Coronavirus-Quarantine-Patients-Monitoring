@@ -20,6 +20,10 @@ import CQPM.com.security.CustomUserDetailService;
 import CQPM.com.security.JwtAuthenticationEntryPoint;
 import CQPM.com.security.JwtAuthenticationFilter;
 
+/**
+ * @author Do Bao Khanh
+ *
+ */
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(securedEnabled = true, jsr250Enabled = true, prePostEnabled = true)

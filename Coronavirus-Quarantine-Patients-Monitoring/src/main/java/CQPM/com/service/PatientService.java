@@ -29,6 +29,10 @@ import CQPM.com.repository.UnitRepository;
 import CQPM.com.util.ModelMapper;
 import CQPM.com.util.Utilities;
 
+/**
+ * @author Do Bao Khanh
+ *
+ */
 @Service
 public class PatientService {
 

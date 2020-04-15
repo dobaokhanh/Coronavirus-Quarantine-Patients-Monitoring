@@ -2,6 +2,10 @@ package CQPM.com.payload;
 
 import javax.validation.constraints.NotBlank;
 
+/**
+ * @author Do Bao Khanh
+ *
+ */
 public class LoginRequest {
 	
 	@NotBlank

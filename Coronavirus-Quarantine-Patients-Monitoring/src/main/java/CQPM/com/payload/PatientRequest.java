@@ -11,6 +11,10 @@ import javax.validation.constraints.Size;
 
 import CQPM.com.entity.DailyCheck;
 
+/**
+ * @author Do Bao Khanh
+ *
+ */
 public class PatientRequest {
 
 	@NotBlank

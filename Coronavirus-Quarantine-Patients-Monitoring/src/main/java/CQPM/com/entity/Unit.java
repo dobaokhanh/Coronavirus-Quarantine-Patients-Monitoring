@@ -18,6 +18,10 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.NaturalId;
 
+/**
+ * @author Do Bao Khanh
+ *
+ */
 @Entity
 @Table(name = "units", uniqueConstraints = @UniqueConstraint(columnNames = { "name" }))
 public class Unit {
