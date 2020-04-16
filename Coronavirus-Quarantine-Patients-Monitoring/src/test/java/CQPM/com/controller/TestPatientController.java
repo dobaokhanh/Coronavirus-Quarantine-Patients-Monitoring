@@ -12,10 +12,9 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
+import com.cqpm.payload.PatientResponse;
+import com.cqpm.service.PatientService;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
-import CQPM.com.payload.PatientResponse;
-import CQPM.com.service.PatientService;
 
 /**
  * @author Do Bao Khanh
