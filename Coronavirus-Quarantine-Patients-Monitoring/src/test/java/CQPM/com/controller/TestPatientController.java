@@ -2,6 +2,8 @@ package CQPM.com.controller;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.ArrayList;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -12,9 +14,11 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import com.cqpm.payload.PatientResponse;
-import com.cqpm.service.PatientService;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import CQPM.com.payload.PatientRequest;
+import CQPM.com.payload.PatientResponse;
+import CQPM.com.service.PatientService;
 
 /**
  * @author Do Bao Khanh
@@ -52,7 +56,7 @@ public class TestPatientController {
 		assertEquals(patientResponseJson, content);
 	}
 
-	// -----------------Test create patient---------------------
+//	// -----------------Test create patient---------------------
 //	@WithMockUser("USER")
 //	@Test
 //	public void createPatient() throws Exception {
@@ -71,7 +75,7 @@ public class TestPatientController {
 //		String patientRequestJson = objectMapper.writeValueAsString(patientRequest);
 //		// Build request
 //		MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post("/api/1/patients")
-//				.accept(MediaType.APPLICATION_OCTET_STREAM).content(patientRequestJson)).andReturn();
+//				.accept(MediaType.ALL).content(patientRequestJson)).andReturn();
 //		
 //	}
 }
