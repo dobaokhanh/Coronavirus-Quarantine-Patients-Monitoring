@@ -36,7 +36,8 @@ public class UnitController {
 	private UnitService unitService;
 
 	//private static final Logger logger = LoggerFactory.getLogger(UnitController.class);
-
+	
+	@GetMapping
 	public PagedResponse<UnitResponse> getAllUnits(
 			@RequestParam(value = "page", defaultValue = AppConstants.DEFAULT_PAGE_NUMBER) int page,
 			@RequestParam(value = "size", defaultValue = AppConstants.DEFAULT_PAGE_SIZE) int size) {
@@ -58,6 +59,5 @@ public class UnitController {
 	public UnitResponse getUnitById(@PathVariable Long unitId) {
 		return unitService.getUnitById(unitId);
 	}
-	
-	
+
 }
