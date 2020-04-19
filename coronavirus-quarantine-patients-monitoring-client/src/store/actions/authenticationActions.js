@@ -1,37 +1,60 @@
 import { request } from '../../utils/requestUtils';
-import { LOGIN_START, LOGIN_SUCCESS, LOGIN_FAIL} from './actionTypes';
-import { ACCESS_TOKEN, API_BASE_URL } from '../../utils/Constants';
+import { LOGIN_START, LOGIN_SUCCESS, LOGIN_FAIL } from './actionTypes';
+import { API_BASE_URL, ACCESS_TOKEN } from '../../utils/Constants';
+import { loginAPI } from '../../utils/APIUtils';
 
-export const loginStart = () => {
+const loginStart = () => {
     return {
         type: LOGIN_START
     };
 };
 
-export const loginSuccess = (dataPayload) => {
+const loginSuccess = (dataPayload, notification) => {
     return {
         type: LOGIN_SUCCESS,
-        data: dataPayload
+        data: dataPayload,
+        notification: notification
     };
 };
 
-export const loginFail = (errorMsg) => {
+const loginFail = (errorMsg) => {
     return {
         type: LOGIN_FAIL,
         error: errorMsg
-    }
+    };
 }
 
 export const login = (loginRequest) => {
-    let promise = request({
-        url: API_BASE_URL + '/auth/signin',
-        method: 'POST',
-        body: JSON.stringify(loginRequest)
-    }).catch (error => {
-        return loginFail(error);
-    });
+    return dispatch => {
 
-    return loginSuccess(promise);
+        dispatch(loginStart());
+
+        loginAPI(loginRequest)
+            .then(response => {
+                localStorage.setItem(ACCESS_TOKEN, response.accessToken);
+                let notification = {
+                    message: 'CQPM',
+                    description: "Your're successfully logged in."
+                };
+                dispatch(loginSuccess(response, notification));
+            })
+            .catch(error => {
+                if (error.status === 401) {
+                    let errorMsg = {
+                        message: 'CQPM',
+                        description: "Your username or password is in correct. Please try again!"
+                    };
+                    dispatch(loginFail(errorMsg));
+                } else {
+                    let errorMsg = {
+                        message: 'CQPM',
+                        description: "Sorry! Something went wrong. Please try again!"
+                    };
+                    dispatch(loginFail(errorMsg));
+                }
+
+            });
+    }
 };
 
 
@@ -44,7 +67,7 @@ export const signup = (signupRequest) => {
 };
 
 export const checkUserNameAvailability = (username) => {
-    return request ({
+    return request({
         url: API_BASE_URL + '/user/checkUsernameAvailability?username=' + username,
         method: 'GET'
     });
@@ -52,6 +75,6 @@ export const checkUserNameAvailability = (username) => {
 
 export const checkEmailAvailability = (email) => {
     return request({
-        url: API_BASE_URL + 'user/checkEmailAvailability?email=' + email, 
+        url: API_BASE_URL + 'user/checkEmailAvailability?email=' + email,
     });
 };

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+//import { connect } from 'react-redux';
 
 import SignupForm from '../../components/signup/SignupForm';
+//import { login } from '../../store/actions/authenticationActions'
 
 class SignupContainer extends Component {
 
@@ -26,7 +28,7 @@ class SignupContainer extends Component {
         const inputName = event.target.name;
 
         this.setState({
-            [inputName] : {
+            [inputName]: {
                 value: event.target.value,
                 ...validationFunc(event.target.value)
             }
@@ -34,13 +36,15 @@ class SignupContainer extends Component {
     };
 
     render() {
+
         let signupForm = (
             <SignupForm
                 name={this.state.name}
                 username={this.state.username}
                 email={this.state.email}
                 password={this.state.password}
-                changed={this.inputChangeHandler} />
+                changed={this.inputChangeHandler}
+                />
         )
 
         return (
@@ -50,5 +54,6 @@ class SignupContainer extends Component {
         )
     }
 };
+
 
 export default SignupContainer;

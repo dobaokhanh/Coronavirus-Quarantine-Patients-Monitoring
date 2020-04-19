@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Input, Button, notification } from 'antd';
+import { Form, Input, Button } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 
@@ -12,24 +12,26 @@ const LoginForm = (props) => (
         <div className="login-content">
             <Form
                 className="login-form"
-                onSubmit={props.submitted}
+                onFinish={props.submitted}
             >
                 <Form.Item
+                    name="usernameOrEmail"
                     rules={[
                         {
                             required: true,
-                            message: 'Please input your username or email',
+                            message: 'Please input your Username or Email !',
                         }
                     ]}>
                     <Input
                         prefix={<UserOutlined className="site-form-item-icon" />}
+                        name="usernameOrEmail"
                         size='large'
-                        name='usernameOrEmail'
                         placeholder="Username or Email"
-                        value={props.usernameOrEmail}
-                        onChange={props.changed} />
+                        onChange={props.changed}
+                    />
                 </Form.Item>
                 <Form.Item
+                    name="password"
                     rules={[
                         {
                             required: true,
@@ -40,8 +42,8 @@ const LoginForm = (props) => (
                         prefix={<LockOutlined className="site-form-item-icon" />}
                         size='large'
                         name='password'
-                        placeholder="password"
-                        value={props.password}
+                        type="password"
+                        placeholder="Password"
                         onChange={props.changed} />
                 </Form.Item>
                 <Form.Item>

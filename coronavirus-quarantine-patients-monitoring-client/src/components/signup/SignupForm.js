@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Form, Input, Button } from 'antd';
 
-import { validateName, validateEmail, validatePassword, validateUsername, validateStatus } from '../../utils/Validators';
+import { validateName} from '../../utils/Validators';
 import './SignupForm.css';
 
 const formItemLayout = {
@@ -36,7 +36,7 @@ const SignupForm = (props) => (
         <div className="signup-content">
             <Form
                 {...formItemLayout}
-                onSubmit={props.handleSubmit}
+                onFinish={props.handleSubmit}
                 className="signup-form">
                 <Form.Item
                     label="Full Name"
@@ -47,7 +47,6 @@ const SignupForm = (props) => (
                         name="name"
                         autoComplete="off"
                         placeholder="Your full name"
-                        value={props.name.value}
                         onChange={(event) => props.changed(event, validateName)} />
                 </Form.Item>
                 <Form.Item label="Username"
