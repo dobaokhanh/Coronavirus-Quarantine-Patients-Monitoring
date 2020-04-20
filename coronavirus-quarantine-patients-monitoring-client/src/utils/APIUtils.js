@@ -30,3 +30,26 @@ export const loginAPI = (loginRequest) => {
         body: JSON.stringify(loginRequest)
     });
 };
+
+export const signupAPI = (signupRequest) => {
+    return request({
+        url: API_BASE_URL + '/auth/signup',
+        method: 'POST',
+        body: JSON.stringify(signupRequest)
+    });
+};
+
+
+export const checkUserNameAvailability = (username) => {
+    return request({
+        url: API_BASE_URL + '/user/checkUsernameAvailability?username=' + username,
+        method: 'GET'
+    });
+};
+
+export const checkEmailAvailability = (email) => {
+    return request({
+        url: API_BASE_URL + '/user/checkEmailAvailability?email=' + email,
+        method: 'GET'
+    });
+};

@@ -6,7 +6,7 @@ const initialState = {
     error: null,
     loading: false,
     notificaton: null,
-    authRedirectPath: '/login'
+    authRedirectPath: null
 };
 
 // ------------------- Sign in -----------------------
@@ -34,11 +34,39 @@ const loginFail = (state, action) => {
     });
 };
 
+//--------------------------Sign up -------------------------
+const signupStart = (state, action) => {
+    return updateObject(state, {
+        error: null,
+        loading: true
+    });
+};
+
+const signupSuccess = (state, action) => {
+    return updateObject(state, {
+        error: null,
+        loading: false,
+        authRedirectPath: '/login',
+        notificaton: action.notificaton
+    });
+};
+
+const signupFail = (state, action) => {
+    return updateObject(state, {
+        error: action.error,
+        loading: false,
+        notificaton: null
+    });
+};
+
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.LOGIN_START: return loginStart(state, action);
         case actionTypes.LOGIN_SUCCESS: return loginSuccess(state, action);
         case actionTypes.LOGIN_FAIL: return loginFail(state, action);
+        case actionTypes.SIGN_UP_START: return signupStart(state, action);
+        case actionTypes.SIGN_UP_SUCCESS: return signupSuccess(state, action);
+        case actionTypes.SIGN_UP_FAIL: return signupFail(state, action);
         default: return state;
     };
 };

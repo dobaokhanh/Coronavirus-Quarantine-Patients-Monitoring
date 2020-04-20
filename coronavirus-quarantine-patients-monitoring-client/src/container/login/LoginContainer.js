@@ -8,19 +8,6 @@ import * as actions from '../../store/actions/index';
 
 class LoginContainer extends Component {
 
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            usernameOrEmail: {
-                value: ''
-            },
-            password: {
-                value: ''
-            }
-        }
-    }
-
     inputChangeHandler = (event) => {
         const inputName = event.target.name;
 
@@ -31,16 +18,19 @@ class LoginContainer extends Component {
         });
     }
 
-    handleSubmit = () => {
+    handleSubmit = (values) => {
         const loginRequest = {
-            usernameOrEmail: this.state.usernameOrEmail.value,
-            password: this.state.password.value
+            usernameOrEmail: values.usernameOrEmail,
+            password: values.password
         };
         this.props.onLogin(loginRequest);
         if (this.props.error) {
             notification.error(this.props.error);
         }
 
+        if (this.props.notification) {
+            notification.success(this.props.notification);
+        }
     }
 
     render() {

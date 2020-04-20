@@ -1,59 +1,78 @@
 import React, { Component } from 'react';
-//import { connect } from 'react-redux';
+import { connect } from 'react-redux';
+import { notification } from 'antd';
+import { Redirect } from 'react-router-dom';
 
 import SignupForm from '../../components/signup/SignupForm';
-//import { login } from '../../store/actions/authenticationActions'
+import * as actions from '../../store/actions/index';
 
 class SignupContainer extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            name: {
-                value: ''
-            },
-            username: {
-                value: ''
-            },
-            email: {
-                value: ''
-            },
-            password: {
-                value: ''
-            }
-        }
-    }
-
-    inputChangeHandler = (event, validationFunc) => {
+    inputChangeHandler = (event) => {
         const inputName = event.target.name;
 
         this.setState({
             [inputName]: {
                 value: event.target.value,
-                ...validationFunc(event.target.value)
             }
         });
     };
+
+    submitHandler = (values) => {
+        const signupRequest = {
+            name: values.name,
+            email: values.email,
+            username: values.username,
+            password: values.password
+        };
+
+        this.props.onSignup(signupRequest);
+
+        if (this.props.error) {
+            notification.error(this.props.error);
+        }
+
+        if (this.props.notification) {
+            notification.success(this.props.notification);
+        }
+    }
 
     render() {
 
         let signupForm = (
             <SignupForm
-                name={this.state.name}
-                username={this.state.username}
-                email={this.state.email}
-                password={this.state.password}
                 changed={this.inputChangeHandler}
-                />
+                submitted={this.submitHandler}
+            />
         )
+
+        let signupRedirectPath = null;
+        if (this.props.authRedirectPath) {
+            signupRedirectPath = <Redirect to={this.props.authRedirectPath} />
+        }
 
         return (
             <div>
+                {signupRedirectPath}
                 {signupForm}
             </div>
         )
     }
 };
 
+const mapStateToProps = state => {
+    return {
+        loading: state.auth.loading,
+        error: state.auth.error,
+        notification: state.auth.notification,
+        authRedirectPath: state.auth.authRedirectPath
+    };
+};
 
-export default SignupContainer;
+const mapDispatchToProps = dispatch => {
+    return {
+        onSignup: (signupRequest) => dispatch(actions.signup(signupRequest))
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignupContainer);
