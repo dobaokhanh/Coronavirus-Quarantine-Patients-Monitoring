@@ -1,4 +1,4 @@
-import { API_BASE_URL, ACCESS_TOKEN } from './Constants';
+import { API_BASE_URL, ACCESS_TOKEN, UNIT_LIST_SIZE } from './Constants';
 
 const request = (options) => {
     const headers = new Headers({
@@ -39,7 +39,6 @@ export const signupAPI = (signupRequest) => {
     });
 };
 
-
 export const checkUserNameAvailability = (username) => {
     return request({
         url: API_BASE_URL + '/user/checkUsernameAvailability?username=' + username,
@@ -50,6 +49,33 @@ export const checkUserNameAvailability = (username) => {
 export const checkEmailAvailability = (email) => {
     return request({
         url: API_BASE_URL + '/user/checkEmailAvailability?email=' + email,
+        method: 'GET'
+    });
+};
+
+export const getAllUnitsAPI = (page, size) => {
+    page = page || 0;
+    size = size || UNIT_LIST_SIZE;
+
+    return request({
+        url: API_BASE_URL + '/units?page=' + page + '&size=' + size,
+        method: 'GET'
+    });
+};
+
+export const getUnitByIdAPI = (unitId) => {
+    return request({
+        url: API_BASE_URL + '/units/' + unitId,
+        method: 'GET'
+    });
+};
+
+export const getAllPatientsAPI = (unitId, page, size) => {
+    page = page || 0;
+    size = size || UNIT_LIST_SIZE;
+
+    return request({
+        url: API_BASE_URL + '/' + unitId + '/patients?page=' + page + '&size=' + size,
         method: 'GET'
     });
 };

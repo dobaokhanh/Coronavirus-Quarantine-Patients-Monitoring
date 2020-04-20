@@ -6,6 +6,8 @@ import thunk from 'redux-thunk';
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 
 import AuthReducer from './store/reducers/authenticationReducer';
+import UnitReducer from './store/reducers/unitReducer';
+import PatientReducer from './store/reducers/patientReducer';
 
 import './index.css';
 import App from './App';
@@ -14,7 +16,9 @@ import * as serviceWorker from './serviceWorker';
 const composeEnhancers = (typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
 
 const rootReducer = combineReducers({
-  auth: AuthReducer
+  auth: AuthReducer,
+  units: UnitReducer,
+  patients: PatientReducer
 });
 
 const store = createStore(rootReducer, composeEnhancers(
