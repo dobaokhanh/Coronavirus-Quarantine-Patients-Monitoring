@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS `patients` (
 CREATE TABLE IF NOT EXISTS `daily_check` (
 	`id` bigint(20) auto_increment NOT NULL,
     `day_number` varchar(15) NOT NULL,
-    `temperature` double NOT NULL default 36,
+    `temperature` double default 36,
     `cough` boolean,
     `fever` boolean,
     `exhausted` boolean,
