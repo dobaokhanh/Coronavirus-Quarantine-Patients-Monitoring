@@ -60,7 +60,7 @@ public class UnitService {
 	public Unit createUnit(UnitRequest unitRequest) {
 		Unit unit = new Unit();
 		unit.setName(unitRequest.getName());
-		unit.setAddrress(unitRequest.getAddrress());
+		unit.setAddress(unitRequest.getAddrress());
 		unit.setPatients(unitRequest.getPatients());
 
 		return unitRepository.save(unit);

@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import CQPM.com.entity.DailyCheck;
 import CQPM.com.entity.Patient;
 import CQPM.com.entity.Unit;
 import CQPM.com.exception.ResourceNotFoundException;
@@ -42,7 +43,8 @@ public class PatientService {
 	@Autowired
 	PatientRepository patientRepository;
 
-	//private static final Logger logger = LoggerFactory.getLogger(PatientService.class);
+	// private static final Logger logger =
+	// LoggerFactory.getLogger(PatientService.class);
 
 	/**
 	 * Get all the patients
@@ -122,16 +124,24 @@ public class PatientService {
 	 * @param patientId
 	 * @return
 	 */
-	public Patient addDailyCheck(DailyCheckRequest dailyCheckRequest, Long unitId, Long patientId) {
+	public Patient addDailyCheck(@RequestBody List<DailyCheckRequest> dailyCheckRequests, Long unitId, Long patientId) {
 
 		Unit unit = unitRepository.findById(unitId)
 				.orElseThrow(() -> new ResourceNotFoundException("Unit", "id", unitId));
 
 		Patient patient = patientRepository.findByUnitIdAndId(unit.getId(), patientId)
 				.orElseThrow(() -> new ResourceNotFoundException("Patient", "id", patientId));
-
-		patient.setDailyCheck(dailyCheckRequest.getDailyCheck());
-
+		DailyCheck dailyCheck = null;
+		for (DailyCheckRequest day : dailyCheckRequests) {
+			dailyCheck = new DailyCheck();
+			dailyCheck.setDayNumber(day.getDayNumber());
+			dailyCheck.setTemperature(day.getTemperature());
+			dailyCheck.setCough(day.getCough());
+			dailyCheck.setFever(day.getFever());
+			dailyCheck.setExhausted(day.getExhausted());
+			dailyCheck.setShortnessOfBreath(day.getShortnessOfBreath());
+			patient.addDailyCheck(dailyCheck);
+		}
 		return patientRepository.save(patient);
 	}
 

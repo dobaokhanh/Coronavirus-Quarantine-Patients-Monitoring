@@ -1,5 +1,6 @@
 package CQPM.com.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -62,7 +63,7 @@ public class Patient {
 	@Column(name = "phone")
 	private String phone;
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "patient_id")
 	private List<DailyCheck> dailyCheck;
 
@@ -139,6 +140,9 @@ public class Patient {
 	}
 
 	public void addDailyCheck(DailyCheck day) {
+		if (dailyCheck == null) {
+			dailyCheck = new ArrayList<>();
+		}
 		dailyCheck.add(day);
 	}
 

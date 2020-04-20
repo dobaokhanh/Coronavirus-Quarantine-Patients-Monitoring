@@ -1,6 +1,7 @@
 package CQPM.com.controller;
 
 import java.net.URI;
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -90,7 +91,7 @@ public class PatientController {
 	 */
 	@PutMapping("/{unitId}/patients/{patientId}")
 	public PatientResponse addDailyCheck(@PathVariable(name = "unitId") Long unitId,
-			@PathVariable(name = "patientId") Long patientId, @Valid @RequestBody DailyCheckRequest dailyCheckRequest) {
+			@PathVariable(name = "patientId") Long patientId, @Valid @RequestBody List<DailyCheckRequest> dailyCheckRequest) {
 
 		return ModelMapper
 				.mapPatientToPatientResponse(patientService.addDailyCheck(dailyCheckRequest, unitId, patientId));

@@ -49,6 +49,8 @@ public class DailyCheck {
 	@NotNull
 	@Column(name = "shortness_of_breath")
 	private Boolean shortnessOfBreath;
+	
+	
 
 	public DailyCheck() {
 		super();

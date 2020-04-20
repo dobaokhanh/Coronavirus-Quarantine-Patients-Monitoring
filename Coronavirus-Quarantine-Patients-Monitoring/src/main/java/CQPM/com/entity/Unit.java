@@ -40,7 +40,7 @@ public class Unit {
 	@NotBlank
 	@Size(max = 100)
 	@Column(name = "address")
-	private String addrress;
+	private String address;
 
 	@OneToMany(mappedBy = "unit", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
 	private List<Patient> patients = new ArrayList<>();
@@ -54,7 +54,7 @@ public class Unit {
 		super();
 		this.id = id;
 		this.name = name;
-		this.addrress = addrress;
+		this.address = addrress;
 		this.patients = patients;
 	}
 
@@ -74,12 +74,12 @@ public class Unit {
 		this.name = name;
 	}
 
-	public String getAddrress() {
-		return addrress;
+	public String getAddress() {
+		return address;
 	}
 
-	public void setAddrress(String addrress) {
-		this.addrress = addrress;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
 	public List<Patient> getPatients() {

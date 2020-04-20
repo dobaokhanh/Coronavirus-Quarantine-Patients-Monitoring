@@ -14,7 +14,7 @@ public class UnitResponse {
 
 	private String name;
 
-	private String addrress;
+	private String address;
 
 	private List<PatientResponse> patients;
 
@@ -37,12 +37,12 @@ public class UnitResponse {
 		this.name = name;
 	}
 
-	public String getAddrress() {
-		return addrress;
+	public String getAddress() {
+		return address;
 	}
 
-	public void setAddrress(String addrress) {
-		this.addrress = addrress;
+	public void setAddress(String addrress) {
+		this.address = addrress;
 	}
 
 	public List<PatientResponse> getPatients() {

@@ -1,33 +1,87 @@
 package CQPM.com.payload;
 
 import java.io.Serializable;
-import java.util.List;
-
-import CQPM.com.entity.DailyCheck;
 
 /**
  * @author Do Bao Khanh
  *
  */
-public class DailyCheckRequest implements Serializable{
+public class DailyCheckRequest implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	List<DailyCheck> dailyCheck;
 
-	public DailyCheckRequest(List<DailyCheck> dailyCheck) {
+	private String dayNumber;
+
+	private Double temperature;
+
+	private Boolean cough;
+
+	private Boolean fever;
+
+	private Boolean exhausted;
+
+	private Boolean shortnessOfBreath;
+
+	public DailyCheckRequest(String dayNumber, Double temperature, Boolean cough, Boolean fever, Boolean exhausted,
+			Boolean shortnessOfBreath) {
 		super();
-		this.dailyCheck = dailyCheck;
+		this.dayNumber = dayNumber;
+		this.temperature = temperature;
+		this.cough = cough;
+		this.fever = fever;
+		this.exhausted = exhausted;
+		this.shortnessOfBreath = shortnessOfBreath;
 	}
 
-	public List<DailyCheck> getDailyCheck() {
-		return dailyCheck;
+	public String getDayNumber() {
+		return dayNumber;
 	}
 
-	public void setDailyCheck(List<DailyCheck> dailyCheck) {
-		this.dailyCheck = dailyCheck;
+	public void setDayNumber(String dayNumber) {
+		this.dayNumber = dayNumber;
+	}
+
+	public Double getTemperature() {
+		return temperature;
+	}
+
+	public void setTemperature(Double temperature) {
+		this.temperature = temperature;
+	}
+
+	public Boolean getCough() {
+		return cough;
+	}
+
+	public void setCough(Boolean cough) {
+		this.cough = cough;
+	}
+
+	public Boolean getFever() {
+		return fever;
+	}
+
+	public void setFever(Boolean fever) {
+		this.fever = fever;
+	}
+
+	public Boolean getExhausted() {
+		return exhausted;
+	}
+
+	public void setExhausted(Boolean exhausted) {
+		this.exhausted = exhausted;
+	}
+
+	public Boolean getShortnessOfBreath() {
+		return shortnessOfBreath;
+	}
+
+	public void setShortnessOfBreath(Boolean shortnessOfBreath) {
+		this.shortnessOfBreath = shortnessOfBreath;
 	}
 
 }

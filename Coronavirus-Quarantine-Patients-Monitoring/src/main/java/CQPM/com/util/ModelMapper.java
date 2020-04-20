@@ -14,7 +14,9 @@ import CQPM.com.payload.UnitResponse;
  */
 public class ModelMapper {
 
-	/** Map Unit to UnitResponse payload
+	/**
+	 * Map Unit to UnitResponse payload
+	 * 
 	 * @param unit
 	 * @return
 	 */
@@ -22,7 +24,7 @@ public class ModelMapper {
 		UnitResponse unitResponse = new UnitResponse();
 		unitResponse.setId(unit.getId());
 		unitResponse.setName(unit.getName());
-		unitResponse.setAddrress(unit.getAddrress());
+		unitResponse.setAddress(unit.getAddress());
 		unitResponse.setNoOfPatients(unit.getPatients().stream().count());
 
 		List<PatientResponse> patientsResponse = unit.getPatients().stream().map(patient -> {
@@ -30,6 +32,9 @@ public class ModelMapper {
 			patientResponse.setId(patient.getId());
 			patientResponse.setName(patient.getName());
 			patientResponse.setEmail(patient.getEmail());
+			patientResponse.setDob(patient.getDob());
+			patientResponse.setAddress(patient.getAddress());
+			patientResponse.setPhone(patient.getPhone());
 			patientResponse.setDailyChecks(patient.getDailyCheck());
 			return patientResponse;
 		}).collect(Collectors.toList());
@@ -38,7 +43,9 @@ public class ModelMapper {
 		return unitResponse;
 	}
 
-	/** Add Patient to PatientResponse payload
+	/**
+	 * Add Patient to PatientResponse payload
+	 * 
 	 * @param patient
 	 * @return
 	 */
@@ -54,4 +61,5 @@ public class ModelMapper {
 
 		return patientResponse;
 	}
+	
 }

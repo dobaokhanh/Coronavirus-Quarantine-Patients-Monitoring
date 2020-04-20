@@ -61,7 +61,7 @@ CREATE TABLE IF NOT EXISTS `daily_check` (
     `fever` boolean,
     `exhausted` boolean,
     `shortness_of_breath` boolean,
-    `patient_id` bigint(20) NOT NULL,
+    `patient_id` bigint(20) default null,
     
     PRIMARY KEY(`id`),
 	CONSTRAINT `fk_daily_check_patients_id` FOREIGN KEY (`patient_id`) REFERENCES `patients`(`id`)
