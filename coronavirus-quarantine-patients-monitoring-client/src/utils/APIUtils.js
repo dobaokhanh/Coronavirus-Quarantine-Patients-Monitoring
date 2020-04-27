@@ -39,7 +39,7 @@ export const signupAPI = (signupRequest) => {
     });
 };
 
-export const checkUserNameAvailability = (username) => {
+export const checkUsernameAvailability = (username) => {
     return request({
         url: API_BASE_URL + '/user/checkUsernameAvailability?username=' + username,
         method: 'GET'
@@ -77,5 +77,21 @@ export const getAllPatientsAPI = (unitId, page, size) => {
     return request({
         url: API_BASE_URL + '/' + unitId + '/patients?page=' + page + '&size=' + size,
         method: 'GET'
+    });
+};
+
+export const addNewPatientAPI = (unitId, patientRequest) => {
+    return request({
+        url: API_BASE_URL + '/' + unitId + '/patients',
+        method: 'POST',
+        body: JSON.stringify(patientRequest)
+    });
+};
+
+export const deletePatientAPI = (unitId, patientRequest) => {
+    return request({
+        url: API_BASE_URL + '/' + unitId + '/patients',
+        method: 'DELETE',
+        body: JSON.stringify(patientRequest)
     });
 };

@@ -1,11 +1,12 @@
 import React from 'react';
 
 import { PageHeader, Row, Statistic, Table } from 'antd';
+import AddNewPatient from './AddNewPatient';
 
 const PatientComponent = (props) => (
     <div>
         <PageHeader
-            title="Coronavirus Quarantine Patients Monitoring"
+            title="Corona Virus Quarantine Patients Monitoring"
             onBack={() => window.history.back()}
             subTitle="Current situation:">
             <Row>
@@ -26,6 +27,7 @@ const PatientComponent = (props) => (
                     value={props.noOfPatients} />
             </Row>
         </PageHeader>
+       <AddNewPatient unitId={props.unitId}/>
         <Table columns={props.columns} dataSource={props.data} />
     </div>
 );

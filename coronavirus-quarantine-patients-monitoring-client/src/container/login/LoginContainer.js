@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
 import LoginForm from '../../components/login/LoginForm';
-import { notification, Spin } from 'antd';
+import { Spin } from 'antd';
 import * as actions from '../../store/actions/index';
 
 class LoginContainer extends Component {
@@ -24,13 +24,6 @@ class LoginContainer extends Component {
             password: values.password
         };
         this.props.onLogin(loginRequest);
-        if (this.props.error) {
-            notification.error(this.props.error);
-        }
-
-        if (this.props.notification) {
-            notification.success(this.props.notification);
-        }
     }
 
     render() {
@@ -47,7 +40,7 @@ class LoginContainer extends Component {
         }
 
         if (this.props.loading) {
-            loginForm = <Spin />
+            loginForm = <Spin size="large" />
         }
 
         return (
@@ -65,7 +58,8 @@ const mapStateToProps = state => {
         isAuthenticated: state.auth.token !== null,
         authRedirectPath: state.auth.authRedirectPath,
         loading: state.auth.loading,
-        error: state.auth.error
+        error: state.auth.error,
+        notification: state.auth.notification
     };
 };
 

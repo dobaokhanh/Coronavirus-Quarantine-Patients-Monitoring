@@ -5,7 +5,7 @@ const initialState = {
     token: null,
     error: null,
     loading: false,
-    notificaton: null,
+    notification: null,
     authRedirectPath: null
 };
 
@@ -20,7 +20,7 @@ const loginSuccess = (state, action) => {
         token: action.data.accessToken,
         error: null,
         loading: false,
-        notificaton: action.notificaton,
+        notification: action.notification,
         authRedirectPath: '/units'
     });
 };
@@ -30,7 +30,7 @@ const loginFail = (state, action) => {
         token: null,
         error: action.error,
         loading: false,
-        notificaton: null
+        notification: null
     });
 };
 
@@ -47,7 +47,7 @@ const signupSuccess = (state, action) => {
         error: null,
         loading: false,
         authRedirectPath: '/login',
-        notificaton: action.notificaton
+        notification: action.notification
     });
 };
 
@@ -55,7 +55,7 @@ const signupFail = (state, action) => {
     return updateObject(state, {
         error: action.error,
         loading: false,
-        notificaton: null
+        notification: null
     });
 };
 

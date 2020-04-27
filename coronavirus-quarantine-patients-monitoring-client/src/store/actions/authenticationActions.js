@@ -1,7 +1,6 @@
 import * as actionTypes from './actionTypes';
 import { ACCESS_TOKEN } from '../../utils/Constants';
 import { loginAPI, signupAPI } from '../../utils/APIUtils';
-
 // ------------------------- Login -------------------------
 
 const loginStart = () => {
