@@ -1,15 +1,11 @@
 package CQPM.com.payload;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.validation.Valid;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
-
-import CQPM.com.entity.DailyCheck;
 
 /**
  * @author Do Bao Khanh
@@ -40,8 +36,6 @@ public class PatientRequest {
 	@Pattern(regexp = "^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\\s\\./0-9]*$", message = "wrong format")
 	@Column(name = "phone")
 	private String phone;
-
-	private List<DailyCheck> dailyCheck;
 
 	private Long unitId;
 
@@ -83,14 +77,6 @@ public class PatientRequest {
 
 	public void setPhone(String phone) {
 		this.phone = phone;
-	}
-
-	public List<DailyCheck> getDailyCheck() {
-		return dailyCheck;
-	}
-
-	public void setDailyCheck(List<DailyCheck> dailyCheck) {
-		this.dailyCheck = dailyCheck;
 	}
 
 	public Long getUnitId() {

@@ -7,6 +7,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -59,13 +60,11 @@ public class PatientController {
 	}
 
 	@PostMapping("/{unitId}/patients")
-	public ResponseEntity<?> createPatient(@Valid @RequestBody PatientRequest patientRequest) {
+	@PreAuthorize("hasRole('ADMIN')")
+	public PatientResponse createPatient(@Valid @RequestBody PatientRequest patientRequest) {
 		Patient patient = patientService.createPatient(patientRequest);
 
-		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{patientId}")
-				.buildAndExpand(patient.getId()).toUri();
-
-		return ResponseEntity.created(location).body(new ApiResponse(true, "Patient added successfully !"));
+		return ModelMapper.mapPatientToPatientResponse(patient);
 	}
 
 	/**
@@ -91,14 +90,15 @@ public class PatientController {
 	 */
 	@PutMapping("/{unitId}/patients/{patientId}")
 	public PatientResponse addDailyCheck(@PathVariable(name = "unitId") Long unitId,
-			@PathVariable(name = "patientId") Long patientId, @Valid @RequestBody List<DailyCheckRequest> dailyCheckRequest) {
+			@PathVariable(name = "patientId") Long patientId,
+			@Valid @RequestBody List<DailyCheckRequest> dailyCheckRequest) {
 
 		return ModelMapper
 				.mapPatientToPatientResponse(patientService.addDailyCheck(dailyCheckRequest, unitId, patientId));
 	}
 
 	@DeleteMapping("/{unitId}/patients")
-	public ResponseEntity<?> deletePatient(PatientRequest patientRequest) {
+	public ResponseEntity<?> deletePatient(@Valid @RequestBody PatientRequest patientRequest) {
 		return patientService.removePatient(patientRequest);
 	}
 

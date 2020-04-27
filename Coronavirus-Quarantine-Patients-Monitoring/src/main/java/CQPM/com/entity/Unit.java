@@ -91,6 +91,9 @@ public class Unit {
 	}
 
 	public void addPatient(Patient patient) {
+		if (patients == null) {
+			patients = new ArrayList<>();
+		}
 		patients.add(patient);
 		patient.setUnit(this);
 	}

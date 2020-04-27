@@ -1,6 +1,7 @@
 package CQPM.com.service;
 
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -94,8 +95,15 @@ public class PatientService {
 		patient.setAddress(patientRequest.getAddress());
 		patient.setEmail(patientRequest.getEmail());
 		patient.setPhone(patientRequest.getPhone());
-		patient.setDailyCheck(patientRequest.getDailyCheck());
 		patient.setUnit(unit);
+		List<DailyCheck> dailyChecks = new ArrayList<>();
+		DailyCheck dailyCheck = null;
+		for (int i = 1; i < 15; i++) {
+			dailyCheck = new DailyCheck();
+			dailyCheck.setDayNumber("Day " + i);
+			dailyChecks.add(dailyCheck);
+		}
+		patient.setDailyCheck(dailyChecks);
 		return patientRepository.save(patient);
 	}
 
@@ -131,16 +139,17 @@ public class PatientService {
 
 		Patient patient = patientRepository.findByUnitIdAndId(unit.getId(), patientId)
 				.orElseThrow(() -> new ResourceNotFoundException("Patient", "id", patientId));
-		DailyCheck dailyCheck = null;
+
+		DailyCheck dailyCheckUpdate = null;
 		for (DailyCheckRequest day : dailyCheckRequests) {
-			dailyCheck = new DailyCheck();
-			dailyCheck.setDayNumber(day.getDayNumber());
-			dailyCheck.setTemperature(day.getTemperature());
-			dailyCheck.setCough(day.getCough());
-			dailyCheck.setFever(day.getFever());
-			dailyCheck.setExhausted(day.getExhausted());
-			dailyCheck.setShortnessOfBreath(day.getShortnessOfBreath());
-			patient.addDailyCheck(dailyCheck);
+			dailyCheckUpdate = patient.getDailyCheck().stream()
+					.filter(daily -> daily.getDayNumber().equalsIgnoreCase(day.getDayNumber())).findAny().orElse(null);
+			dailyCheckUpdate.setDayNumber(day.getDayNumber());
+			dailyCheckUpdate.setTemperature(day.getTemperature());
+			dailyCheckUpdate.setCough(day.getCough());
+			dailyCheckUpdate.setFever(day.getFever());
+			dailyCheckUpdate.setExhausted(day.getExhausted());
+			dailyCheckUpdate.setShortnessOfBreath(day.getShortnessOfBreath());
 		}
 		return patientRepository.save(patient);
 	}
@@ -151,13 +160,17 @@ public class PatientService {
 	 * @param patientRequest
 	 * @return
 	 */
-	public ResponseEntity<?> removePatient(@Valid @RequestBody PatientRequest patientRequest) {
+	public ResponseEntity<?> removePatient(PatientRequest patientRequest) {
+
 		Patient patient = patientRepository.findByNameAndEmail(patientRequest.getName(), patientRequest.getEmail());
 
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().replacePath("/api/{unitId}/patients").build()
 				.toUri();
 
-		patientRepository.delete(patient);
+		Unit unit = unitRepository.findById(patientRequest.getUnitId())
+				.orElseThrow(() -> new ResourceNotFoundException("Unit", "id", patientRequest.getUnitId()));
+		unit.removePatient(patient);
+		unitRepository.save(unit);
 
 		return ResponseEntity.created(location).body(new ApiResponse(true, "Delete successfully !"));
 

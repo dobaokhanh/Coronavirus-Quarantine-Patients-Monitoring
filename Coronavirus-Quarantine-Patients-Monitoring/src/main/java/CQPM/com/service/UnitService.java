@@ -61,7 +61,6 @@ public class UnitService {
 		Unit unit = new Unit();
 		unit.setName(unitRequest.getName());
 		unit.setAddress(unitRequest.getAddrress());
-		unit.setPatients(unitRequest.getPatients());
 
 		return unitRepository.save(unit);
 	}

@@ -28,25 +28,20 @@ public class DailyCheck {
 	@Column(name = "day_number")
 	private String dayNumber;
 
-	@NotNull
 	@Column(name = "temperature")
 	@Max(value = 45)
 	@Min(value = 30)
 	private Double temperature;
 
-	@NotNull
 	@Column(name = "cough")
 	private Boolean cough;
 
-	@NotNull
 	@Column(name = "fever")
 	private Boolean fever;
 
-	@NotNull
 	@Column(name = "exhausted")
 	private Boolean exhausted;
 
-	@NotNull
 	@Column(name = "shortness_of_breath")
 	private Boolean shortnessOfBreath;
 	

@@ -63,7 +63,7 @@ public class Patient {
 	@Column(name = "phone")
 	private String phone;
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
 	@JoinColumn(name = "patient_id")
 	private List<DailyCheck> dailyCheck;
 
