@@ -3,6 +3,7 @@ package CQPM.com.controller;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -38,6 +39,7 @@ public class UnitController {
 	}
 
 	@PostMapping
+	@PreAuthorize("hasRole('ADMIN')")
 	public UnitResponse createUnit(@Valid @RequestBody UnitRequest unitRequest) {
 		Unit unit = unitService.createUnit(unitRequest);
 		return ModelMapper.mapUnitToUnitResponse(unit);

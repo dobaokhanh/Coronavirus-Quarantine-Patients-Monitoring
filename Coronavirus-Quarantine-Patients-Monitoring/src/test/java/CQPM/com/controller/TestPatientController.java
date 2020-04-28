@@ -2,8 +2,6 @@ package CQPM.com.controller;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.ArrayList;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -16,7 +14,6 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import CQPM.com.payload.PatientRequest;
 import CQPM.com.payload.PatientResponse;
 import CQPM.com.service.PatientService;
 
@@ -26,13 +23,14 @@ import CQPM.com.service.PatientService;
  */
 @SpringBootTest
 @AutoConfigureMockMvc
-public class TestPatientController {
+public class TestPatientController extends AbstractTest {
 
 	@Autowired
 	private MockMvc mvc;
 
 	@Autowired
 	private PatientService patientService;
+
 
 	// ------------Test get patient by id api-----------------
 
@@ -56,26 +54,4 @@ public class TestPatientController {
 		assertEquals(patientResponseJson, content);
 	}
 
-//	// -----------------Test create patient---------------------
-//	@WithMockUser("USER")
-//	@Test
-//	public void createPatient() throws Exception {
-//
-//		// Create patient request object
-//		PatientRequest patientRequest = new PatientRequest();
-//		patientRequest.setName("Test Patient");
-//		patientRequest.setDob("12/11/2000");
-//		patientRequest.setAddress("Helsinki");
-//		patientRequest.setEmail("test.patient@gmail.com");
-//		patientRequest.setPhone("0123124144");
-//		patientRequest.setUnitId((long) 1);
-//		patientRequest.setDailyCheck(new ArrayList<>());
-//
-//		ObjectMapper objectMapper = new ObjectMapper();
-//		String patientRequestJson = objectMapper.writeValueAsString(patientRequest);
-//		// Build request
-//		MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post("/api/1/patients")
-//				.accept(MediaType.ALL).content(patientRequestJson)).andReturn();
-//		
-//	}
 }

@@ -1,6 +1,5 @@
 package CQPM.com.controller;
 
-import java.net.URI;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -17,10 +16,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import CQPM.com.entity.Patient;
-import CQPM.com.payload.ApiResponse;
 import CQPM.com.payload.DailyCheckRequest;
 import CQPM.com.payload.PagedResponse;
 import CQPM.com.payload.PatientRequest;
@@ -60,7 +57,6 @@ public class PatientController {
 	}
 
 	@PostMapping("/{unitId}/patients")
-	@PreAuthorize("hasRole('ADMIN')")
 	public PatientResponse createPatient(@Valid @RequestBody PatientRequest patientRequest) {
 		Patient patient = patientService.createPatient(patientRequest);
 
