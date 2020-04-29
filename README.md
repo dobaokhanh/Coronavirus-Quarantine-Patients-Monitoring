@@ -1,14 +1,35 @@
 # Coronavirus Quarantine Patients Monitoring
+## Do Bao Khanh and Le Duc Anh
+## e1700699 and e1700679
 Monitoring the patients being kept in quarantine
 
 ## Table of contents
 * [Technologies](#Technologies)
 * [Configuration](#Configuration)
-  * [Database Configuration](#DatabaseConfiguration)
-  * [Working With IDE](#WorkingWithIDE)
 * [Usage](#Usage)
 * [Deployment](#Deployment)
 * [Status](#Status)
+
+## Analysis
+### Case description
+### Table of functional requirement
+
+Priority level
+1- Must have
+2- Should have
+3- Nice to have
+
+|Reference|Description|Priority
+|---------|-----------|--------|
+|F1|Authentication|1|
+|F2|Show all the unit to the table|1|
+|F3|Show all the patients to the table|1|
+|F3|Add new patient|2|
+|F4|Add new unit|2|
+|F5|Delete patient|2|
+|F6|Add role to the user, make sure only admin can delete the unit|3|
+|F7|Delete unit|3|
+
 ## Technologies
 * Back-end (Server):
   * Java 12
