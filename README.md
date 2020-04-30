@@ -5,6 +5,26 @@ Monitoring the patients being kept in quarantine
 
 ## Analysis
 ### Case description
+####	Actors of the solution:
+ *	Doctors
+ *	Administrators
+####	Roles of actors:
+ *	Doctors: use the system by retrieving, providing and updating information.
+ *	Administrators: operate and administrate the implementation of the system.
+####	Tasks the actors would like to do:
+ *	Doctors: create/update doctor accounts, create/update/delete patients’ information.
+ *	Administrators: install, start up, maintain and shut down the system.
+####	Data input:
+ *	Data input under various types (string, date/time, numbers, etc.) by authorized actors.
+####	Output data type:
+ *	Data is saved to database.
+ *	Data is displayed as a web page.
+####	What kind of algorithms there are:
+ *	Authentication algorithm: allows only authorized actors to gain access to the system.
+ *	Authorization algorithm: different actors gain different access levels to the system.
+ *	Data integrity algorithm: ensures only allowed data is to be input into the system, and only such data will be exported to actors.
+ *	Data availability algorithm: ensures which kind of data will be shown to certain actors.
+
 ### Table of functional requirement
 
 Priority level
@@ -27,9 +47,17 @@ Priority level
 
 ![picture_alt](https://github.com/dobaokhanh/Coronavirus-Quarantine-Patients-Monitoring/blob/master/public_img/UseCase.PNG "Use cases")
 
-### Test plan
+### Project plan
 
-- Test everything before commit
+![picture_alt](https://github.com/dobaokhanh/Coronavirus-Quarantine-Patients-Monitoring/blob/master/public_img/ProjectPlan1.jpg "Project Plan")
+![picture_alt](https://github.com/dobaokhanh/Coronavirus-Quarantine-Patients-Monitoring/blob/master/public_img/ProjectPlan2.jpg "Project Plan Diagram")
+
+### Test plan
+*	Account creation test
+*	Authentication test
+*	Authorization test 
+*	Test of patients creation and deletion
+*	Test of patients’ information update and retrieval
 
 ## Design
 ### Sequence diagrams
