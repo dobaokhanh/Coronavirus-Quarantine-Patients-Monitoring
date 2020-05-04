@@ -37,11 +37,11 @@ Priority level
 |F1|Authentication|1|
 |F2|Show all the unit to the table|1|
 |F3|Show all the patients to the table|1|
-|F3|Add new patient|2|
-|F4|Add new unit|2|
-|F5|Delete patient|2|
-|F6|Add role to the user, make sure only admin can delete the unit|3|
-|F7|Delete unit|3|
+|F4|Add new patient|2|
+|F5|Add new unit|2|
+|F6|Delete patient|2|
+|F7|Add role to the user, make sure only admin can delete the unit|3|
+|F8|Delete unit|3|
 
 ### Use case diagram
 
